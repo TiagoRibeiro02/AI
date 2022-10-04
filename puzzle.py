@@ -96,12 +96,17 @@ def expand_tree(Tree, N, L, W):
 
     for N in sucessors(Tree[0], L, W):
         insert_tree(Tree, [N,[]], Tree[0])
-        
+
 
     return Tree
 
 state = create_random_state(L, W)
 show_state(state, L, W)
+print("\n\n")
+tree = [state, []]
+show_tree(tree, L, W)
+print("\n\n")
+
 print("\nsucessores", sucessors(state, L, W))
 
 
