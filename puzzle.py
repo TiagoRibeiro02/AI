@@ -92,8 +92,13 @@ def count_tree(Tree):
             ret += count_tree(t)
         return (1 + ret)
     return ret
-def expand_tree(Tree, N):
+def expand_tree(Tree, N, L, W):
 
+    for N in sucessors(Tree[0], L, W):
+        insert_tree(Tree, [N,[]], Tree[0])
+        
+
+    return Tree
 
 state = create_random_state(L, W)
 show_state(state, L, W)
