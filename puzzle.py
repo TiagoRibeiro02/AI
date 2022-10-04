@@ -63,6 +63,36 @@ def sucessors(state, L, W):
 
     return suc
 
+def find_node (Tree, Tab):
+    if len(Tree) == 0:
+        return None
+    if Tree[0] == Tab: ##Tree[0] = tabuleiro
+        return Tab
+    for t in Tree[1]: ##Tree[1] = lista dos filhos
+        aux = find_node(Tree, Tab)
+        if aux is not None:
+            return aux
+    return None
+def insert_tree(Tree, New, Father):
+    nd = find_node(Tree, Father)
+    if nd is None:
+        return nd
+    nd[1].insert(New, -1)
+    return Tree
+def show_tree(Tree, L, W):
+    if len(Tree) == 0:
+        return
+    show_state(Tree[0], L, W)
+    for t in Tree[1]:
+        show_tree(t)
+def count_tree(Tree):
+    ret = 0
+    if len(Tree) > 0:
+        for t in Tree[1]:
+            ret += count_tree(t)
+        return (1 + ret)
+    return ret
+def expand_tree(Tree, N):
 
 
 state = create_random_state(L, W)
